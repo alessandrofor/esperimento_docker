@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Pippo;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -15,7 +16,7 @@ class PippoController extends AbstractController
     /**
      * @Route("/pippo", name="app_pippo")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, EntityManagerInterface $em): Response
     {
         $superPippo = new Pippo();
         $form = $this->createFormBuilder($superPippo)
@@ -24,7 +25,6 @@ class PippoController extends AbstractController
             ->getForm();
 
         $form->handleRequest($request);
-        $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted()) {
             $em->persist($superPippo);
             $em->flush();
@@ -33,7 +33,7 @@ class PippoController extends AbstractController
         return $this->renderForm('pippo/index.html.twig', [
             'controller_name' => 'PippoController',
             'form' => $form,
-            'pippo' => [0 => ['nome' => 'paperino'], 1 => ['nome'=>'pluto']] //$this->getDoctrine()->getRepository(pippo::class)->findAll(),
+            'pippo' => $em->getRepository(pippo::class)->findAll(),
         ]);
     }
 }
