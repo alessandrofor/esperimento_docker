@@ -30,7 +30,7 @@ class SocialNetworkPoster
      */
     public function getSocialNetwork(): SocialNetworkConnector
     {
-        return self::class;
+        return $this;
     }
 
     /**
