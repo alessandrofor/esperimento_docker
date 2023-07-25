@@ -15,3 +15,5 @@ RUN git config --global user.email "alessandro.fortunati@innoteam.it" \
     && git config --global user.name "alessandro"
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install symfony-cli
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
