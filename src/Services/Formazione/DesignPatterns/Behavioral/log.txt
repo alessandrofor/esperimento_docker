@@ -1,0 +1,3 @@
+2023-07-25 13:05:16: 'users:init' with data '"\/Users\/alessandro\/formazione\/udemy\/docker\/formazione_docker\/src\/Services\/Formazione\/DesignPatterns\/Behavioralusers.csv"'
+2023-07-25 13:05:16: 'users:created' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"4e31f433ef0e27ea0a32a4bf018b2c13"}}'
+2023-07-25 13:05:16: 'users:deleted' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"4e31f433ef0e27ea0a32a4bf018b2c13"}}'
